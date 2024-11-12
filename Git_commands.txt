@@ -1,0 +1,107 @@
+1. Git Configuration
+	git --version
+	git config --global user.name ""
+	git config --global user.email ""
+	git config --list --global (to check the configuration)
+		git config (--get) user.name (to check user name specifically)
+		git config (--get) merge.tool
+	Notes: Microsoft owns Git, GitHub, VS as IDE
+
+2. Git Starting a project (clone & work with directory/repository)
+	cd (change a directory path)
+		cd .. (go up one level)
+	mkdir <dir_name> (create a directory)
+		cd <dir_name> (go to directory when you are at the parent)
+		rmdir <dir_name> (delete directory, prompt to confirm if not empty)
+	git init (need to initialize the current directory  - only when first time)
+		git init <dir_name> (will create initialize new directory)
+	git clone [url] (for public directory)
+		git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)
+	cls - clean directory
+	.gitignore
+
+3. Git Day to day work (status, add and commit)
+	git status (status of the working directory)
+		git status -s  (shortcut for status of the working directory)
+	git add (stage the file, not commit yet)
+		git add . (will add all files)
+		git add *.txt (will add only all .txt files)
+		git [file].txt (will add only file named [file].txt)
+	git reset (unstage files, not committed yet)
+		git reset . (remove all from staging)
+		git reset [file].txt (remove specific file from staging)
+	git commit
+		git commit -m "…" (commit from staging)
+		git commit -am "…" (avoid staging part)
+	git diff (staged to working directory)
+		git diff --staged (staged vs repository)
+	git clean (from working directory of untracked files)
+		git clean -fd
+	git rm [file] - remove from staging and working directory as well
+	git mv [file].txt [file].txt - moves for move or rename
+	git log (all history)
+		git log --oneline (check the first 7 digit commit)
+	git checkout ####### (first 7 digit of commit, HEAD will move to that commit, keep the commits after)
+		git checkout master (or main instead master, to go back to the last commit)
+		git checkout [file] (discard changes in working directory)
+		Note: HEAD is where the working directory is now
+	git restore [file] (will restore the file to where the head is pointing out)
+		git restore --source HEAD~N [file] (how many commits to go back to restore the file)
+		git restore --staged [file] (removing from staging area)
+	git reset ####### (impact only commits, not files, not working directory)
+		git reset ####### --hard (switches the current branch, leaving a difference as an uncommitted change)
+	git revert #######  (similar to reset but creates new commit instead of deleting the one between)
+		…this makes it more safe comparing to git reset as the common history is not impacted
+	git show #######  (from commit above)
+		git show HEAD - last one
+		git show HEAD~N - number indicates how many lines we want to go back
+	git tag (list all tags)
+		git tag -d [name] (delete tag)
+
+4. Git Storing the work (git stash)
+	git stash (put the changes in working directory to stash for later use)
+	git stash pop (apply stored stash content into working directory, and clear stash)
+	git stash apply
+	git stash drop (delete a specific stash from all your previous stashes)
+
+5. Git Branch
+	git branch (show all branches)
+	git switch [name]
+		git branch [name] (create a new branch)
+		bit branch -m new_name (rename branch)
+		git branch d- name (delete, give warning if you did not delete them, need to switch to master/other branch  before)
+		git branch D- name (delete even if not pushed yet, need to switch to master/other branch before)
+	git diff [name1] [name2] (when working with branches)
+	git rebase [name2] (Apply commits of the current working branch and apply them to the HEAD)
+	git merge [name2] (to merge to master, need to switch to master -> Fast forward merge w no conflict)
+		git merge -X theirs [name2] (if conflict, take from the branch)
+6. Synchronizing repositories
+	Git clone:
+		git clone [url] (for public directory)
+		git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)
+		Git pull
+		Git push (will go to working)
+		Git remove -v (will show url)
+		Git fetch (only to the repository, not working)
+	Git remote:
+		Git remote -v (will add url)
+		Git remote add name <url>
+		Git remote rm name
+	Create new repository on the command line
+		Git init
+		Git add README.md
+		Git commit -m "first commit"
+		Git branch -M main
+		Git remove add origin https://github.com/
+		Git push -u origin main
+	Push to an existing repository 
+		Git remote add origin https://github.com/
+		Git branch -M main
+		Git push -u origin main
+		Delete remote branch: git push origin -d <branch name>
+	
+7. Others:
+	ls (in bash… list objects without hidden one)
+		ls -a (in bash… list objects show git subdirectory that is hidden otherwise)
+		rm -rf .git (in bash… if we want to remove git)
+		ls-files (in bash… files in staging area)
