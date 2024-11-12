@@ -85,6 +85,7 @@
 		git clone [url] (for public directory)
 			git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)	
 		git fetch (will go only to the repository, not working)
+			git reset --hard origin/main (use to change the local main for the one on remote)
 		git pull (combination of git fetch and git merge)
 		git push -u origin main (will go to working, from branch main)
 			git push origin -d <branch name> (delete remote branch)
