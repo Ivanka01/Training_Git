@@ -75,26 +75,27 @@
 	git rebase [name2] (Apply commits of the current working branch and apply them to the HEAD)
 	git merge [name2] (to merge to master, need to switch to master -> Fast forward merge w no conflict)
 		git merge -X theirs [name2] (if conflict, take from the branch)
-6. Synchronizing repositories
-	Git clone:
+
+6. Synchronizing remote repositories
+	Git remote:
 		git clone [url] (for public directory)
-		git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)
+			git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)
+		git remote -v (will show all repositories)
+		git remove origin (will remove repository)
 		Git pull
 		Git push (will go to working)
-		Git remove -v (will show url)
 		Git fetch (only to the repository, not working)
-	Git remote:
 		Git remote -v (will add url)
 		Git remote add name <url>
 		Git remote rm name
-	Create new repository on the command line
+	A. Create new repository on the command line
 		Git init
 		Git add README.md
 		Git commit -m "first commit"
 		Git branch -M main
 		Git remove add origin https://github.com/
 		Git push -u origin main
-	Push to an existing repository 
+	B. Push to an existing repository 
 		Git remote add origin https://github.com/
 		Git branch -M main
 		Git push -u origin main
