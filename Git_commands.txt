@@ -5,7 +5,7 @@
 	git config --list --global (to check the configuration)
 		git config (--get) user.name (to check user name specifically)
 		git config (--get) merge.tool
-	Notes: Microsoft owns Git, GitHub, VS as IDE
+	note: Microsoft owns Git, GitHub, VS as IDE
 
 2. Git Starting a project (clone & work with directory/repository)
 	cd (change a directory path)
@@ -60,34 +60,39 @@
 
 4. Git Storing the work (git stash)
 	git stash (put the changes in working directory to stash for later use)
+		git stash save "comment"
 	git stash pop (apply stored stash content into working directory, and clear stash)
-	git stash apply
+	git stash apply (reapply the stash without deleting it)
 	git stash drop (delete a specific stash from all your previous stashes)
+	git stash clear (delete all the shashes)
+	git stash list
 
 5. Git Branch
 	git branch (show all branches)
-	git switch [name]
+	git switch [name]             
 		git branch [name] (create a new branch)
 		bit branch -m new_name (rename branch)
 		git branch d- name (delete, give warning if you did not delete them, need to switch to master/other branch  before)
 		git branch D- name (delete even if not pushed yet, need to switch to master/other branch before)
+	git checkout [name] (switch to branch and update working directory)
 	git diff [name1] [name2] (when working with branches)
-	git rebase [name2] (Apply commits of the current working branch and apply them to the HEAD)
+	git rebase [name2] (apply commits of the current working branch and apply them to the HEAD)
 	git merge [name2] (to merge to master, need to switch to master -> Fast forward merge w no conflict)
 		git merge -X theirs [name2] (if conflict, take from the branch)
 
 6. Synchronizing remote repositories
 	Git remote:
 		git clone [url] (for public directory)
-			git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)
+			git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)	
+		git fetch (will go only to the repository, not working)
+		git pull (combination of git fetch and git merge)
+		git push -u origin main (will go to working, from branch main)
+			git push origin -d <branch name> (delete remote branch)
+			note: origin for remote, -u for tracking reference to the upstream server
 		git remote -v (will show all repositories)
 		git remove origin (will remove repository)
-		Git pull
-		Git push (will go to working)
-		Git fetch (only to the repository, not working)
-		Git remote -v (will add url)
-		Git remote add name <url>
-		Git remote rm name
+		git remote add name <url>
+		git remote rm name
 	A. Create new repository on the command line
 		Git init
 		Git add README.md
@@ -99,7 +104,7 @@
 		Git remote add origin https://github.com/
 		Git branch -M main
 		Git push -u origin main
-		Delete remote branch: git push origin -d <branch name>
+		
 	
 7. Others:
 	ls (in bash… list objects without hidden one)
