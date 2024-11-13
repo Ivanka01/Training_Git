@@ -69,8 +69,9 @@
 
 5. Git Branch
 	git branch (show all branches)
-	git switch [name]             
 		git branch [name] (create a new branch)
+		git switch [name] (HEAD on that branch)        	
+		git checkout -b [name] (create a new branch and switch there at the same time)
 		bit branch -m new_name (rename branch)
 		git branch d- name (delete, give warning if you did not delete them, need to switch to master/other branch  before)
 		git branch D- name (delete even if not pushed yet, need to switch to master/other branch before)
@@ -83,8 +84,8 @@
 6. Synchronizing remote repositories
 	Git remote:
 		git clone [url] (for public directory)
-			git clone https://<pat>@github.com/<account>/<repo>.git (for private add personal token PAT)	
-		git fetch (will go only to the repository, not working)
+			git clone https://<pat>@github.com/<account>/<repo>.git (for private directory, add GitHub personal token PAT)	
+		git fetch (will go only to the repository, not working, e.g. when expecting conflicts)
 			git reset --hard origin/main (use to change the local main for the one on remote)
 		git pull (combination of git fetch and git merge)
 		git push -u origin main (will go to working, from branch main)
@@ -106,7 +107,6 @@
 		Git branch -M main
 		Git push -u origin main
 		
-	
 7. Others:
 	ls (in bash… list objects without hidden one)
 		ls -a (in bash… list objects show git subdirectory that is hidden otherwise)
